@@ -15,6 +15,15 @@ server.get('/', (req, res) => {
 
 //custom middleware
 
-function logger(req, res, next) {}
+// Start by defining a function that shows our current predicament at the console as the application loads.We’ll write middleware that logs information about every request that comes into our server. 
+function logger(req, res, next) {
+  console.log(
+    `a ${req.method} request was made to ${
+      req.url
+    } at ${new Date().toISOString()}`
+  );
+  next();
+}
+// Then add it as the first middleware in the queue. server.use(logger); ABOVE
 
 module.exports = server;
