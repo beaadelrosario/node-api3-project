@@ -3,8 +3,12 @@ const userDb = require("./userDb");
 
 const router = express.Router();
 
-router.post('/', (req, res) => {
-  // do your magic!
+router.post("/", validateUser, (req, res) => {
+  userDb.insert(req.body)
+    .then((res) => {
+      res.status(200).json({ message: "I werk" });
+    })
+    .catch();
 });
 
 router.post('/:id/posts', (req, res) => {

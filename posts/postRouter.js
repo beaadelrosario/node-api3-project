@@ -4,7 +4,7 @@ const postDb = require("./postDb");
 const router = express.Router();
 
 router.get('/', (req, res) => {
-  // do your magic!
+  res.status(200).json({ message: "hello" });
 });
 
 router.get('/:id', (req, res) => {
